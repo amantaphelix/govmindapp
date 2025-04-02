@@ -331,7 +331,7 @@ def get_news(request):
         news_data.append({
             "article_id": str(article.article_id),  # ✅ FIXED!
             "title": article.title,
-            "department": article.department,
+            "category": article.category,
             "sentiment": sentiment,
             "source": article.source,
             "last_updated": article.last_updated.strftime("%Y-%m-%d %H:%M") if article.last_updated else "Unknown",
@@ -373,7 +373,7 @@ def article_detail(request, article_id):
     last_updated = article.last_updated.strftime("%Y-%m-%d %H:%M") if article.last_updated else "Unknown Date"
 
     # ✅ Get related articles from the same department
-    related_articles = News.objects.filter(department=article.department).exclude(article_id=article_id)[:5]
+    related_articles = News.objects.filter(category=article.category).exclude(article_id=article_id)[:5]
 
     return render(request, "article_detail.html", {
         "article": article,

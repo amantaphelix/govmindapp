@@ -66,10 +66,10 @@
 
                 <!-- Department Filter -->
                 <div class="col-md-2">
-                    <select name="department" id="department-select" class="form-select">
-                        <option value="" {% if not request.GET.department %}selected{% endif %}>All Departments</option>
+                    <select name="category" id="department-select" class="form-select">
+                        <option value="" {% if not request.GET.category %}selected{% endif %}>All Departments</option>
                         {% for dept in departments %}
-                            <option value="{{ dept }}" {% if request.GET.department == dept %}selected{% endif %}>{{ dept }}</option>
+                            <option value="{{ dept }}" {% if request.GET.category == dept %}selected{% endif %}>{{ dept }}</option>
                         {% endfor %}
                     </select>
                 </div>
